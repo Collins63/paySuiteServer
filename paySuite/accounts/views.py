@@ -20,7 +20,6 @@ def login_user(request):
             {'error': 'Username and password are required.'},
             status=status.HTTP_400_BAD_REQUEST
         )
-
     user = authenticate(username=username, password=password)
     login(user)
     if user is not None:
