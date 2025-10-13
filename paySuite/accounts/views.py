@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
-import json
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -24,25 +22,11 @@ def login_user(request):
         )
 
     user = authenticate(username=username, password=password)
-
+    login(user)
     if user is not None:
-        refresh = RefreshToken.for_user(user)
-        return Response({
-            'success': True,
-            'message': 'Login successful',
-            'user': {
-                'id': user.id,
-                'username': user.username,
-                'email': user.email,
-            },
-            'access': str(refresh.access_token),
-            'refresh': str(refresh)
-        }, status=status.HTTP_200_OK)
+        return HttpResponse(status=200)
     else:
-        return Response(
-            {'success': False, 'error': 'Invalid credentials.'},
-            status=status.HTTP_401_UNAUTHORIZED
-        )
+        return HttpResponse(status=404)
 
 @csrf_exempt
 def logout_api(request):
