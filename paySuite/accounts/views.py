@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from django.contrib.auth import authenticate
+from .models import AuthUser
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -22,11 +23,12 @@ def login_user(request):
         )
 
     user = authenticate(username=username, password=password)
+    users= list(AuthUser.objects.filter(id=user.id).values())
     login(user)
     if user is not None:
-        return HttpResponse(status=200)
+        return JsonResponse(users[0],safe=False,status=200)
     else:
-        return HttpResponse(status=404)
+        return JsonResponse(status=404)
 
 @csrf_exempt
 def logout_api(request):
