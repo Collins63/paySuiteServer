@@ -14,3 +14,11 @@ class Employees(models.Model):
     status = models.CharField(max_length=100)
 
 # Create your models here.
+class Expenses(models.Model):
+    employee=models.ForeignKey(Employees, on_delete=models.CASCADE,null=True)
+    description=models.TextField(default="",null=True)
+    amount=models.DecimalField(null=True,max_digits=12, decimal_places=5)
+    category=models.TextField(default="",null=True)
+    expense=models.DateField(default="",null=True)
+    approved=models.BooleanField(default=False)
+    
