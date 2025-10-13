@@ -1,0 +1,6 @@
+### Run app api
+python manage.py runserver
+
+## Model creation
+python manage.py makemigrations <API app name>
+python manage.py migrate
