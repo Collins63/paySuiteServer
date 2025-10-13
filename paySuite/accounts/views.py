@@ -9,8 +9,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework import status
 from django.contrib.auth import authenticate
 
-import json
-print("ASD")
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login_user(request):
