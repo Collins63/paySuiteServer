@@ -10,7 +10,7 @@ from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 import json
-
+print("ASD")
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login_user(request):
