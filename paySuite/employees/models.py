@@ -21,4 +21,12 @@ class Expenses(models.Model):
     category=models.TextField(default="",null=True)
     expense=models.DateField(default="",null=True)
     approved=models.BooleanField(default=False)
-    
+
+class Loans(models.Model):
+    employee=models.ForeignKey(Employees, on_delete=models.CASCADE,null=True)
+    principal=models.TextField(null=True)
+    interest_rate=models.DecimalField(null=True,max_digits=12, decimal_places=5)
+    total_amount=models.DecimalField(null=True,max_digits=12, decimal_places=5)
+    balance=models.DecimalField(null=True,max_digits=12, decimal_places=5)
+    start_date=models.DateTimeField(null=True)
+    status=models.BooleanField(default=False)
