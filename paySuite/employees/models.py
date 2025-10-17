@@ -12,6 +12,7 @@ class Employees(models.Model):
     position = models.CharField(max_length=100)
     salary = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True , )
 
 # Create your models here.
 class Expenses(models.Model):
@@ -21,4 +22,5 @@ class Expenses(models.Model):
     category=models.TextField(default="",null=True)
     expense=models.DateField(default="",null=True)
     approved=models.BooleanField(default=False)
+    
     
