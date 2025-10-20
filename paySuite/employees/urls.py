@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path , include
 from .views import EmployeeViewset
+from rest_framework.routers import DefaultRouter
 
 detail_actions = {
     'get': 'retrieve',
@@ -8,12 +9,9 @@ detail_actions = {
     'delete': 'destroy'
 }
 
+router = DefaultRouter()
+router.register(r'employees', EmployeeViewset, basename='employee')
+
 urlpatterns = [
-    # 1. List (GET) and Create (POST) endpoint
-    path('api/employees/', EmployeeViewset.as_view({'get': 'list', 'post': 'create'})),
-    
-    # 2. Detail endpoints (Retrieve, Update, Destroy)
-    path('api/employees/<int:pk>/' , EmployeeViewset.as_view(detail_actions)),
-    
-    # 3. ❌ REMOVE the path('api/employees/post' ... ) line as it is now redundant.
+    path('api/', include(router.urls)),
 ]

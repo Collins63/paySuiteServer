@@ -12,6 +12,15 @@ class Employees(models.Model):
     position = models.CharField(max_length=100)
     salary = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
+    address = models.CharField(max_length=250, null=True)
+    country = models.CharField(max_length=100 , default='Zimbabwe')
+    province = models.CharField(max_length=100 ,null=True)
+    nationality = models.CharField(max_length=100, default='Zimbabwean')
+    profile_image = models.ImageField(
+        upload_to='profiles/', 
+        null=True, 
+        blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True , )
 
 # Create your models here.
