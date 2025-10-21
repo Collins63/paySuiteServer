@@ -6,6 +6,8 @@ class Organization(models.Model):
     email = models.EmailField(max_length=100, null=False)
     phone = models.CharField(max_length=15, null=False)
     logo = models.ImageField(upload_to='organizationLogos/', null=True, blank=True)
+    province = models.CharField(max_length=100 , null=True)
+    country = models.CharField(max_length=100 , default='Zimbabwe')
     created_at = models.DateTimeField(auto_now_add=True)
     
 class Department(models.Model):
