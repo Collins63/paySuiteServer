@@ -13,6 +13,7 @@ class EmployeeViewset(viewsets.ModelViewSet):
         
     queryset = models.Employees.objects.all()
     serializer_class = serializers.EmployeeSerializer
+    
     # @csrf_exempt
     # def get(self, request , id=None):
     #     if id:
