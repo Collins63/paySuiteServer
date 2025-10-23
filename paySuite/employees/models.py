@@ -31,5 +31,13 @@ class Expenses(models.Model):
     category=models.TextField(default="",null=True)
     expense=models.DateField(default="",null=True)
     approved=models.BooleanField(default=False)
-    
+
+
+class Attendance(models.Model):
+    employee=models.ForeignKey(Employees, on_delete=models.CASCADE,null=True),
+    employee_name=models.CharField(max_length=200,default="",null=True)
+    date=models.DateField(default="",null=False)
+    check_in=models.TimeField(default="",null=False)
+    check_out=models.TimeField(default="",null=True)
+    status=models.CharField(max_length=100,default="Present",null=False)
     

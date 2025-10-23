@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Employees,Expenses
+from .models import Employees,Attendance , Expenses
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,4 +9,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expenses
-        field = 'all'
+        field = '__all__'
+
+class AttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Attendance
+        field = '__all__'
