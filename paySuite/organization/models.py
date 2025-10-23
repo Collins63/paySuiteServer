@@ -15,6 +15,3 @@ class Department(models.Model):
     name = models.CharField(max_length=200 , null=False)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
-
-# Create your models here.
