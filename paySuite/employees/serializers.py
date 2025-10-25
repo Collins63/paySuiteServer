@@ -9,9 +9,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expenses
-        field = '__all__'
+        fields = '__all__'
 
 class AttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendance
-        field = '__all__'
+        fields = '__all__'

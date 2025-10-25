@@ -21,6 +21,8 @@ class EmployeeViewset(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
     filterset_class = filters.EmployeeFilter
     
+    search_fields = ['^first_name' , '^last_name' , '^email']
+    
 
 class ExpenseViewset(viewsets.ModelViewSet):
     queryset = models.Expenses.objects.all()
@@ -37,3 +39,5 @@ class AttendanceViewset(viewsets.ModelViewSet):
     #filters
     filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
     filterset_class = filters.AttendanceFilter
+    
+    search_fields = ['^employee_name']

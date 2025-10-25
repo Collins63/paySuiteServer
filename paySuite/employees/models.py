@@ -34,10 +34,11 @@ class Expenses(models.Model):
 
 
 class Attendance(models.Model):
-    employee=models.ForeignKey(Employees, on_delete=models.CASCADE,null=True),
+    employee=models.ForeignKey(Employees, on_delete=models.CASCADE,null=True)
     employee_name=models.CharField(max_length=200,default="",null=True)
-    date=models.DateField(default="",null=False)
-    check_in=models.TimeField(default="",null=False)
-    check_out=models.TimeField(default="",null=True)
+    date=models.DateField(auto_now_add=True)
+    check_in=models.TimeField(auto_now_add= True)
+    check_out=models.TimeField(null=True)
     status=models.CharField(max_length=100,default="Present",null=False)
+    hours_worked = models.CharField(max_length=10 , default=0)
     
