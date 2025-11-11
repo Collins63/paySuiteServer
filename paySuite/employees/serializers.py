@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Employees,Attendance , Expenses
+from .models import Employees,Attendance , Expenses , Loan_Payments , Loan_Tops , Loans
 from datetime import date, datetime
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -33,3 +33,18 @@ class AttendanceSerializer(serializers.ModelSerializer):
             )
         
         return data
+
+class LoansSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loans
+        fields = '__all__'
+        
+class LoanPaymentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loan_Payments
+        fields = '__all__'
+        
+class LoanTopsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Loan_Tops
+        fields = '__all__'

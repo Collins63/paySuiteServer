@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'accounts',
     'employees',
     'organization',
+    'salaries',
+    'contractors',
     'corsheaders',
     'rest_framework_simplejwt',
 ]

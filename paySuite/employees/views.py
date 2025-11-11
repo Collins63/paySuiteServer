@@ -34,6 +34,30 @@ class ExpenseViewset(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
     filterset_class = filters.ExpenseFilter
     
+class LoansViewset(viewsets.ModelViewSet):
+    queryset = models.Loans.objects.all()
+    serializer_class = serializers.LoansSerializer
+    
+    #filters
+    filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
+    filterset_class = filters.LoansFilter
+
+class LoanPaymentsViewset(viewsets.ModelViewSet):
+    queryset = models.Loan_Payments.objects.all()
+    serializer_class = serializers.LoanPaymentsSerializer
+    
+    #filters
+    filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
+    filterset_class = filters.LoanPaymentsFilter
+    
+class LoanTopsViewset(viewsets.ModelViewSet):
+    queryset = models.Loan_Tops.objects.all()
+    serializer_class = serializers.LoanTopsSerializer
+    
+    #filters
+    filter_backends = [DjangoFilterBackend , SearchFilter , OrderingFilter]
+    filterset_class = filters.LoanTopsFilter
+    
 class AttendanceViewset(viewsets.ModelViewSet):
     queryset = models.Attendance.objects.all()
     serializer_class = serializers.AttendanceSerializer
@@ -44,10 +68,10 @@ class AttendanceViewset(viewsets.ModelViewSet):
     
     search_fields = ['^employee_name']
     
+    
     # ----------------------------------------------------------------------
     # Custom Action for Check-Out (PATCH /api/attendance/checkout/{employee_id}/)
     # ----------------------------------------------------------------------
-    
     @action(detail=False ,methods=['patch'] ,url_path=r'checkout/(?P<employee_id>\d+)')
     def checkout(self, request , employee_id = None):
         try:
