@@ -14,8 +14,8 @@ class SalaryGrades(models.Model):
     grade_level = models.CharField(max_length=100, null=False)
     
 class SalaryGradeComponents(models.Model):
-    grade_id = models.ForeignKey(SalaryGrades , on_delete=models.CASCADE , null=True)
-    component_id = models.ForeignKey(SalaryComponents , on_delete=models.CASCADE , null =True)
+    grade = models.ForeignKey(SalaryGrades , on_delete=models.CASCADE , null=True)
+    component = models.ForeignKey(SalaryComponents , on_delete=models.CASCADE , null =True)
     amount =  models.DecimalField(max_digits=100 , decimal_places=2 , null=False)
     frequency = models.CharField(max_length=100 , null=False , default="Monthly")
     is_active = models.CharField(max_length=100 , null=False , default="active")

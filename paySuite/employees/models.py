@@ -1,4 +1,5 @@
 from django.db import models
+from salaries.models import SalaryGrades, SalaryGradeComponents
 
 class Employees(models.Model):
     first_name = models.CharField(max_length=100)
@@ -10,7 +11,8 @@ class Employees(models.Model):
     organization_id = models.CharField(max_length=100)
     department_id = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
-    salary = models.CharField(max_length=100)
+    salary_grade = models.ForeignKey(SalaryGrades , on_delete=models.CASCADE,null=True)
+    salary_grade_component = models.ForeignKey(SalaryGradeComponents, on_delete=models.CASCADE , null=True)
     status = models.CharField(max_length=100)
     address = models.CharField(max_length=250, null=True)
     country = models.CharField(max_length=100 , default='Zimbabwe')
