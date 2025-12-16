@@ -50,8 +50,9 @@ class LoanPaymentsFilter(django_filters.FilterSet):
 
 class LoanTopsFilter(django_filters.FilterSet):
     employee = django_filters.NumberFilter(field_name='employee', lookup_expr='exact')
+    loan = django_filters.NumberFilter(field_name='loan' , lookup_expr='exact')
 
     class Meta:
         model = Loan_Tops
         # List the fields that can be filtered via query parameters
-        fields = ['employee']
+        fields = ['loan','employee']

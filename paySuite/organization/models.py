@@ -15,3 +15,11 @@ class Department(models.Model):
     name = models.CharField(max_length=200 , null=False)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+class Banks(models.Model):
+    organization = models.ForeignKey(Organization , on_delete=models.CASCADE)
+    bank_name = models.CharField(max_length=200 , null=False)
+    branch = models.CharField(max_length=200 , null=False)
+    account_name = models.CharField(max_length=200, null=False)
+    account_number = models.CharField(max_length=200 , null=False)
+    currency = models.CharField(max_length=100 , null=False)

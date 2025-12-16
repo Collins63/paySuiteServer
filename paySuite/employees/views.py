@@ -25,6 +25,11 @@ class EmployeeViewset(viewsets.ModelViewSet):
     
     search_fields = ['^first_name' , '^last_name' , '^email']
     
+    @action(detail=False , methods=['get'], url_path='count')
+    def get_employee_count(self , request):
+        count = self.queryset.count()
+        return Response({'count': count})
+    
 
 class ExpenseViewset(viewsets.ModelViewSet):
     queryset = models.Expenses.objects.all()
