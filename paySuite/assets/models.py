@@ -8,6 +8,7 @@ class CompanyAssets(models.Model):
     category = models.CharField(max_length=100, null=False)
     asset_value = models.DecimalField(max_digits=100, decimal_places=2 , null=False)
     aquisition_date = models.DateField(null=False)
+    status = models.CharField(max_length=100 , null=True , default='Active')
     
 class AssetLinks(models.Model):
     asset = models.ForeignKey(CompanyAssets , on_delete=models.CASCADE , null=False)
